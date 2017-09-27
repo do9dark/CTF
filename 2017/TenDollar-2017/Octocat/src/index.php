@@ -4,7 +4,7 @@
 	<title>Octocat</title>
 	<style type="text/css">
 		body { color: #FFFFFF; background-color: #171515; vertical-align: middle; }
-		a { color: #C9C9C9;	text-decoration: none; }
+		a { color: #C9C9C9; text-decoration: none; }
 		b { color: #FDFD96; padding-left: 30%; }	
 		p { padding-left: 35%; }
 		center { color: #FBE68B; }

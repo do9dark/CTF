@@ -5,7 +5,7 @@
 > (Core/Kernel/Nucleus/Hack)
 
 ## Write-up
-![Main](img/001.png)
+![Main](img/001.png)  
 메인 페이지에 접근해보면 핵폭발 후 생기는 버섯구름처럼 보이는 것을 볼 수 있습니다.  
 버섯구름 아래에 보면 초록색으로 되어있는 잡초를 볼 수 있고 눌러보면 php 파일이 다운로드 됩니다.
 
@@ -72,7 +72,7 @@ download.php 소스 코드를 보면 파일이 다운로드 되는 과정을 볼
 .hint:sublime { text-decoration: none; }
 ```
 
-![Hint](img/002.png)
+![Hint](img/002.png)  
 힌트는 Sublime Text로 메인 페이지의 소스를 Sublime Text로 보면 ADMIN이라는 문자열을 확인할 수 있고 admin으로 파일 다운로드를 시도하면 admin.php 파일을 획득할 수 있도록 마련한 장치입니다.  
 /download.php?file=..././admin
 
@@ -127,7 +127,7 @@ config.php:
 두 파일의 정보를 바탕으로 'admin' 쿠키 값을 "true"로 설정하고 admin.php 파일에 접근하면 관리자 페이지에 접근할 수 있습니다.  
 ![AdminPage](img/003.png)
 
-그리고 admin.php 파일을 보면 다음과 같이 GET 파라미터로 값을 전달 받아서 파일을 삭제하는 부분을 볼 수 있으나, 아직 개발이 완료되지 않아서 전체 삭제가 되지 않도록 "*" 기호는 필터링되어 있고 글자 길이도 3글자가 넘을 경우 실행되지 않도록 처리되어 있는 것을 볼 수 있습니다.  
+그리고 admin.php 파일을 보면 다음과 같이 GET 파라미터로 값을 전달 받아서 파일을 삭제하는 부분을 볼 수 있으나, 아직 개발이 완료되지 않아서 전체 삭제가 되지 않도록 *(asterisk) 기호는 필터링되어 있고 글자 길이도 3글자가 넘을 경우 실행되지 않도록 처리되어 있는 것을 볼 수 있습니다.  
 ```
     $del = isset($_GET['del']) ? $_GET['del'] : false;
     if($del) {

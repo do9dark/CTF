@@ -1,8 +1,8 @@
 # Core
 
 **Description:**
-> 핵(Core = Hack = Nucleus) 실험은 진행 중... :(
-
+> 핵 실험은 진행 중... :(  
+> (Core/Kernel/Nucleus/Hack)
 
 ## Write-up
 ![Main](img/001.png)

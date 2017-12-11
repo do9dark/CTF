@@ -9,4 +9,6 @@
 
 ## Solution
 
+
 ## Flag
+SECCON{N0SQL_1njection_for_Elasticsearch!}

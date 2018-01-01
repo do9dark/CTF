@@ -18,3 +18,4 @@
 ## Solution
 
 ## Flag
+SECCON{lul_that_was_cheating}

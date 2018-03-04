@@ -1,5 +1,8 @@
 # CTF
 Capture The Flag (CTF)
+- 2018
+    * [CODEGATE](2018/CODEGATE-2018)
+    * [Insomni\`hack](2018/Insomni-hack-2018)
 - 2017
     * [HITCON](2017/HITCON-2017)
     * [SECCON](2017/SECCON-2017)
